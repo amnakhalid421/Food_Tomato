@@ -1,0 +1,32 @@
+@model IEnumerable<Order>
+@{
+    ViewData["Title"] = "Manage Orders";
+}
+<section class="container py-4">
+    <div class="admin-nav"><a asp-controller="Dashboard" asp-action="Index">Dashboard</a><a asp-controller="FoodItems" asp-action="Index">Food Items</a><a asp-controller="Categories" asp-action="Index">Categories</a><a asp-controller="Orders" asp-action="Index">Orders</a><a asp-controller="Users" asp-action="Index">Users</a></div>
+    <h1 class="mb-3">All Orders</h1>
+    <div class="table-responsive cart-panel">
+        <table class="table align-middle">
+            <thead><tr><th>#</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th></tr></thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>@order.Id</td>
+                        <td>@order.CustomerName<br /><span class="text-muted small">@order.User?.Email</span></td>
+                        <td>@order.CreatedAt.ToLocalTime().ToString("MMM dd, yyyy")</td>
+                        <td>$@order.TotalAmount</td>
+                        <td>
+                            <select class="form-select form-select-sm order-status" data-order-id="@order.Id">
+                                @foreach (var status in Enum.GetValues<OrderStatus>())
+                                {
+                                    <option value="@status" selected="@(status == order.Status)">@status</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

@@ -1,0 +1,41 @@
+@model MenuViewModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <span class="pill">Fresh meals in minutes</span>
+            <h1>Order delicious food from your favorite kitchen.</h1>
+            <p>Browse chef-picked dishes, add them to your cart instantly, and track every order from preparation to delivery.</p>
+            <a class="btn btn-brand btn-lg" asp-controller="Menu" asp-action="Index">Explore Menu</a>
+        </div>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="section-heading">
+        <span class="eyebrow">Categories</span>
+        <h2>Choose your craving</h2>
+    </div>
+    <div class="category-row">
+        @foreach (var category in Model.Categories)
+        {
+            <a class="category-chip" asp-controller="Menu" asp-action="Index" asp-route-categoryId="@category.Id">
+                <img src="@category.ImageUrl" alt="@category.Name" />
+                <span>@category.Name</span>
+            </a>
+        }
+    </div>
+</section>
+
+<section class="container pb-5">
+    <div class="section-heading">
+        <span class="eyebrow">Popular</span>
+        <h2>Recommended today</h2>
+    </div>
+    <div class="row g-4">
+        @await Html.PartialAsync("_FoodCards", Model.FoodItems)
+    </div>
+</section>

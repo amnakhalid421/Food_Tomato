@@ -1,0 +1,26 @@
+@model Order
+@{
+    ViewData["Title"] = $"Order #{Model.Id}";
+}
+
+<section class="container py-5">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+        <div>
+            <h1>Order #@Model.Id</h1>
+            <p class="text-muted mb-0">@Model.CreatedAt.ToLocalTime().ToString("f")</p>
+        </div>
+        <span class="badge status-badge">@Model.Status</span>
+    </div>
+    <div class="table-responsive cart-panel">
+        <table class="table align-middle">
+            <thead><tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr></thead>
+            <tbody>
+                @foreach (var item in Model.OrderDetails)
+                {
+                    <tr><td>@item.FoodItem?.Name</td><td>@item.Quantity</td><td>$@item.UnitPrice</td><td>$@item.LineTotal</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <h4 class="text-end mt-3">Total: $@Model.TotalAmount</h4>
+</section>

@@ -1,0 +1,38 @@
+@model IEnumerable<CartItem>
+@{
+    ViewData["Title"] = "Cart";
+    var total = Model.Sum(x => x.LineTotal);
+}
+
+<section class="page-band">
+    <div class="container">
+        <h1>Your Cart</h1>
+        <p>Update quantities and remove items using AJAX.</p>
+    </div>
+</section>
+
+<section class="container py-4">
+    <div class="table-responsive cart-panel">
+        <table class="table align-middle">
+            <thead>
+                <tr><th>Item</th><th>Price</th><th style="width:150px">Qty</th><th>Total</th><th></th></tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr data-cart-row="@item.Id">
+                        <td><img src="@item.FoodItem?.ImageUrl" class="cart-thumb" alt="" /> @item.FoodItem?.Name</td>
+                        <td>$@item.FoodItem?.Price</td>
+                        <td><input class="form-control cart-qty" type="number" min="1" value="@item.Quantity" data-cart-id="@item.Id" /></td>
+                        <td class="line-total">$@item.LineTotal</td>
+                        <td><button class="btn btn-sm btn-outline-danger remove-cart" data-cart-id="@item.Id"><i class="bi bi-trash"></i></button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="cart-summary">
+        <h4>Total: <span id="cart-total">$@total</span></h4>
+        <a class="btn btn-brand" asp-controller="Checkout" asp-action="Index">Proceed to Checkout</a>
+    </div>
+</section>

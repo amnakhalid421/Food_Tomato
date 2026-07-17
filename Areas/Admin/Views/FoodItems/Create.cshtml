@@ -1,0 +1,3 @@
+@model FoodItem
+@{ ViewData["Title"] = "Add Food Item"; }
+<section class="container py-4"><h1>Add Food Item</h1><form method="post" class="form-card">@await Html.PartialAsync("_Form", Model)</form></section>

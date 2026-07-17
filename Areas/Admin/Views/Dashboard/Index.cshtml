@@ -1,0 +1,21 @@
+@model AdminDashboardViewModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<section class="admin-shell container py-4">
+    <div class="admin-nav">
+        <a asp-action="Index" asp-controller="Dashboard">Dashboard</a>
+        <a asp-action="Index" asp-controller="FoodItems">Food Items</a>
+        <a asp-action="Index" asp-controller="Categories">Categories</a>
+        <a asp-action="Index" asp-controller="Orders">Orders</a>
+        <a asp-action="Index" asp-controller="Users">Users</a>
+    </div>
+    <h1 class="mb-4">Admin Dashboard</h1>
+    <div class="row g-4">
+        <div class="col-md-6 col-xl-3"><div class="metric-card"><span>Total Users</span><strong>@Model.TotalUsers</strong></div></div>
+        <div class="col-md-6 col-xl-3"><div class="metric-card"><span>Total Orders</span><strong>@Model.TotalOrders</strong></div></div>
+        <div class="col-md-6 col-xl-3"><div class="metric-card"><span>Food Items</span><strong>@Model.TotalFoodItems</strong></div></div>
+        <div class="col-md-6 col-xl-3"><div class="metric-card"><span>Total Revenue</span><strong>$@Model.TotalRevenue</strong></div></div>
+    </div>
+</section>

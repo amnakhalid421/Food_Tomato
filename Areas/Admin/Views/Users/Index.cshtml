@@ -1,0 +1,39 @@
+@using Microsoft.AspNetCore.Identity
+@using FoodDeliveryMvc.Data
+@inject UserManager<ApplicationUser> UserManager
+@model IEnumerable<ApplicationUser>
+@{
+    ViewData["Title"] = "Manage Users";
+}
+<section class="container py-4">
+    <div class="admin-nav"><a asp-controller="Dashboard" asp-action="Index">Dashboard</a><a asp-controller="FoodItems" asp-action="Index">Food Items</a><a asp-controller="Categories" asp-action="Index">Categories</a><a asp-controller="Orders" asp-action="Index">Orders</a><a asp-controller="Users" asp-action="Index">Users</a></div>
+    <h1 class="mb-3">Users</h1>
+    <div class="table-responsive cart-panel">
+        <table class="table align-middle">
+            <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Roles</th><th></th></tr></thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    var roles = await UserManager.GetRolesAsync(user);
+                    <tr>
+                        <td>@user.FullName</td>
+                        <td>@user.Email</td>
+                        <td>@user.PhoneNumber</td>
+                        <td>@string.Join(", ", roles)</td>
+                        <td class="text-end">
+                            <form asp-action="ToggleRole" method="post" class="d-inline">
+                                <input type="hidden" name="userId" value="@user.Id" />
+                                <input type="hidden" name="role" value="@DbSeeder.AdminRole" />
+                                <button class="btn btn-sm btn-outline-dark">Toggle Admin</button>
+                            </form>
+                            <form asp-action="Delete" method="post" class="d-inline">
+                                <input type="hidden" name="userId" value="@user.Id" />
+                                <button class="btn btn-sm btn-outline-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

@@ -1,0 +1,21 @@
+@model IEnumerable<Order>
+@{
+    ViewData["Title"] = "Order History";
+}
+
+<section class="page-band"><div class="container"><h1>Order History</h1><p>View your latest order statuses.</p></div></section>
+<section class="container py-4">
+    <div class="row g-3">
+        @foreach (var order in Model)
+        {
+            <div class="col-md-6">
+                <a class="order-card" asp-action="Details" asp-route-id="@order.Id">
+                    <strong>Order #@order.Id</strong>
+                    <span>@order.CreatedAt.ToLocalTime().ToString("MMM dd, yyyy")</span>
+                    <span class="badge text-bg-warning">@order.Status</span>
+                    <strong>$@order.TotalAmount</strong>
+                </a>
+            </div>
+        }
+    </div>
+</section>

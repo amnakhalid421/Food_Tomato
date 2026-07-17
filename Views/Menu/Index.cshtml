@@ -1,0 +1,33 @@
+@model MenuViewModel
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<section class="page-band">
+    <div class="container">
+        <h1>Food Menu</h1>
+        <p>Search and filter the menu without refreshing the page.</p>
+    </div>
+</section>
+
+<section class="container py-4">
+    <form id="menu-filter" class="menu-toolbar">
+        <input type="hidden" id="categoryId" name="categoryId" value="@Model.CategoryId" />
+        <div class="input-group search-box">
+            <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+            <input class="form-control" id="search" name="search" value="@Model.Search" placeholder="Search dishes, categories, ingredients..." />
+        </div>
+    </form>
+
+    <div class="category-row my-4">
+        <button class="category-filter @(Model.CategoryId == null ? "active" : "")" data-category="">All</button>
+        @foreach (var category in Model.Categories)
+        {
+            <button class="category-filter @(Model.CategoryId == category.Id ? "active" : "")" data-category="@category.Id">@category.Name</button>
+        }
+    </div>
+
+    <div id="menu-results" class="row g-4">
+        @await Html.PartialAsync("_FoodCards", Model.FoodItems)
+    </div>
+</section>

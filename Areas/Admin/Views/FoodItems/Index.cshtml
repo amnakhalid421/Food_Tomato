@@ -1,0 +1,32 @@
+@model IEnumerable<FoodItem>
+@{
+    ViewData["Title"] = "Manage Food Items";
+}
+<section class="container py-4">
+    <div class="admin-nav"><a asp-controller="Dashboard" asp-action="Index">Dashboard</a><a asp-controller="FoodItems" asp-action="Index">Food Items</a><a asp-controller="Categories" asp-action="Index">Categories</a><a asp-controller="Orders" asp-action="Index">Orders</a><a asp-controller="Users" asp-action="Index">Users</a></div>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Food Items</h1>
+        <a class="btn btn-brand" asp-action="Create">Add Food Item</a>
+    </div>
+    <div class="table-responsive cart-panel">
+        <table class="table align-middle">
+            <thead><tr><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Status</th><th></th></tr></thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><img src="@item.ImageUrl" class="cart-thumb" alt="" /></td>
+                        <td>@item.Name</td>
+                        <td>@item.Category?.Name</td>
+                        <td>$@item.Price</td>
+                        <td>@(item.IsAvailable ? "Available" : "Hidden")</td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-dark" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline"><button class="btn btn-sm btn-outline-danger">Delete</button></form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

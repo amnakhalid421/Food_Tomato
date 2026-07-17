@@ -1,0 +1,71 @@
+@using FoodDeliveryMvc.Data
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - Tomato Express</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+
+    <!-- Navbar - dark background, no white -->
+    <nav class="navbar navbar-expand-lg sticky-top bg-dark navbar-dark border-bottom border-secondary">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-white" asp-controller="Home" asp-action="Index">Tomato Express</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                    <!-- Home and Menu remain plain text links -->
+                    <li class="nav-item"><a class="nav-link text-white" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" asp-controller="Menu" asp-action="Index">Menu</a></li>
+
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <li class="nav-item"><a class="nav-link text-white" asp-controller="Orders" asp-action="Index">Orders</a></li>
+                        <li class="nav-item"><a class="nav-link text-white position-relative" asp-controller="Cart" asp-action="Index"><i class="bi bi-bag"></i> Cart</a></li>
+                        @if (User.IsInRole(DbSeeder.AdminRole))
+                        {
+                            <!-- Admin button - red filled -->
+                            <li class="nav-item"><a class="btn btn-sm btn-brand" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Admin</a></li>
+                        }
+                        <li class="nav-item">
+                            <form asp-controller="Account" asp-action="Logout" method="post">
+                                <!-- Logout button - red filled -->
+                                <button class="btn btn-sm btn-brand" type="submit">Logout</button>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        <!-- Login and Register - red filled -->
+                        <li class="nav-item"><a class="btn btn-sm btn-brand" asp-controller="Account" asp-action="Login">Login</a></li>
+                        <li class="nav-item"><a class="btn btn-sm btn-brand" asp-controller="Account" asp-action="Register">Register</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <!-- Footer - dark, without ASP.NET line -->
+    <footer class="py-4 mt-5 border-top border-secondary bg-dark text-white-50">
+        <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+            <span>Tomato Express food delivery system</span>
+           
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

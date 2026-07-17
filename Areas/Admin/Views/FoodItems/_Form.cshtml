@@ -1,0 +1,15 @@
+@model FoodItem
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<label asp-for="Name" class="form-label"></label>
+<input asp-for="Name" class="form-control mb-3" />
+<label asp-for="Description" class="form-label"></label>
+<textarea asp-for="Description" class="form-control mb-3" rows="3"></textarea>
+<label asp-for="Price" class="form-label"></label>
+<input asp-for="Price" class="form-control mb-3" />
+<label asp-for="ImageUrl" class="form-label"></label>
+<input asp-for="ImageUrl" class="form-control mb-3" />
+<label asp-for="CategoryId" class="form-label"></label>
+<select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-select mb-3"></select>
+<label class="form-check mb-3"><input asp-for="IsAvailable" class="form-check-input" /> Available</label>
+<button class="btn btn-brand">Save</button>
+<a class="btn btn-outline-dark" asp-action="Index">Cancel</a>
