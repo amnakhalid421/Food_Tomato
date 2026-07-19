@@ -148,13 +148,13 @@ The application uses SQL Server with Entity Framework Core.
 
 Main entities include:
 
-Users
-Roles
-Food Items
-Categories
-Cart Items
-Orders
-Order Details
+- Users
+- Roles
+- Food Items
+- Categories
+- Cart Items
+- Orders
+- Order Details
 Entity relationships are managed using Entity Framework Core.
 
 
@@ -166,18 +166,18 @@ Entity relationships are managed using Entity Framework Core.
 
 ## Steps
 
-1. Clone the repo
+### 1. Clone the repo
 ```
 git clone https://github.com/amnakhalid421/Tomato-Express.git
 ```
 
 
-2. Open the project
+### 2. Open the project
 
 Open the  ``` .sln ``` file in VS
 
 
-3. Configure Database Connection
+### 3. Configure Database Connection
 
 Update the connection string in:
 
@@ -185,7 +185,7 @@ Update the connection string in:
 appsettings.json
 ```
 
-4. Apply Database Migration
+### 4. Apply Database Migration
 
 Run 
 
@@ -193,7 +193,7 @@ Run
 Update-Database
 ```
 
-5. Run the application
+### 5. Run the application
 
 Press:
 
