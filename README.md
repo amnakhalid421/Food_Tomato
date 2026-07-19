@@ -6,73 +6,83 @@ Tomato Express allows customers to explore food items, manage their shopping car
 
 This project was developed as part of my journey into full-stack web development, focusing on real-world concepts like authentication, authorization, database relationships, and dynamic user interactions.
 
-## Developers
+# Developers
 
-Nida Noor18
-Amna Khalid421
-
-
-## Features 
-
-##Customer Features
-
-User registration and login
-Secure authentication using ASP.NET Core Identity
-Browse food items and categories
-View food details
-Add items to shopping cart
-Update cart using AJAX
-Place orders
-View order history
-
-## Admin Features
-
-Role-based authorization
-Admin dashboard
-Manage food items
-Manage categories
-Manage customer orders
-Control application data
-
-## Screenshots
-
-## Home page
+### Amna Khalid421
+### Nida Noor18
 
 
 
-## Food Items
+# Features 
+
+### Customer Features
+
+- User registration and login
+- Secure authentication using ASP.NET Core Identity
+- Browse food items and categories
+- View food details
+- Add items to shopping cart
+- Update cart using AJAX
+- Place orders
+- View order history
+
+### Admin Features
+
+- Role-based authorization
+- Admin dashboard
+- Manage food items
+- Manage categories
+- Manage customer orders
+- Control application data
+
+# Screenshots
+
+### Home page
+
+<img width="1600" height="688" alt="WhatsApp Image 2026-07-17 at 7 21 40 PM" src="https://github.com/user-attachments/assets/77668041-3333-4d3c-b772-a17cda920c21" />
 
 
 
-## Shopping Cart
+### Food Items
 
-
-
-## Order histroy
+<img width="1413" height="826" alt="WhatsApp Image 2026-07-17 at 7 21 41 PM (1)" src="https://github.com/user-attachments/assets/232304d0-8a45-4344-912b-7ce05bf3de35" />
 
 
 
 
-## Admin Dashboard
+### Shopping Cart
+
+<img width="1600" height="721" alt="WhatsApp Image 2026-07-17 at 7 21 41 PM" src="https://github.com/user-attachments/assets/1c121613-d436-4cdc-8b63-c4c54f2a59f2" />
 
 
 
+### Order histroy
 
-## Technologies Used
+<img width="1600" height="501" alt="WhatsApp Image 2026-07-17 at 7 21 41 PM (2)" src="https://github.com/user-attachments/assets/e998b6a4-ddb0-492d-ab9a-26e880df3b52" />
 
-## Backend
+
+
+### Admin Dashboard
+
+<img width="1600" height="571" alt="WhatsApp Image 2026-07-17 at 7 21 42 PM" src="https://github.com/user-attachments/assets/93586af2-2261-42b2-aa13-3c24833872a1" />
+
+
+
+# Technologies Used
+
+### Backend
 - ASP.NET Core MVC 
 - C#
 - Entity Framework Core
 - ASP.NET Core Identity
 
-## Frontend
+### Frontend
 - HTML, CSS, JavaScript, jQuery
 - Bootstrap 
 - Bootstrap Icons
 - AJAX
 
-## Database
+### Database
 - Entity Framework Core Code First Approach
 - SQL Server / SQL Server Express
 
@@ -157,36 +167,44 @@ Entity relationships are managed using Entity Framework Core.
 ## Steps
 
 1. Clone the repo
-```powershell
-git clone 
-
-
+```
+git clone https://github.com/amnakhalid421/Tomato-Express.git
 ```
 
 
-2. 
+2. Open the project
+
+Open the  ``` .sln ``` file in VS
 
 
-```powershell
-dotnet restore
+3. Configure Database Connection
+
+Update the connection string in:
+
+```
+appsettings.json
 ```
 
-5. Apply migrations:
+4. Apply Database Migration
 
-```powershell
-dotnet ef database update
+Run 
+
+```
+Update-Database
 ```
 
-6. Run the project:
+5. Run the application
 
-```powershell
-dotnet run --urls http://localhost:5088
+Press:
+
+```
+Ctrl + F5
 ```
 
-7. Open:
+or run:
 
-```text
-http://localhost:5088
+```
+dotnet run
 ```
 
 The application seeds roles, default users, categories, and food items on startup.
@@ -222,11 +240,28 @@ Password: Customer@123
 - Responsive UI for desktop, tablet, and mobile
 - Local frontend libraries in `wwwroot/lib`
 
-## Cleanup Notes
+## Learning Outcomes
 
-The final project folder keeps only relevant ASP.NET Core MVC files. Build outputs, ZIP files, old frontend/backend stack files, cache files, and temporary files are excluded from the cleaned project.
+Through this project, I learned:
 
-## Remaining Limitations
+- Building complete ASP.NET Core MVC applications
+- Implementing authentication and authorization
+- Designing database relationships using Entity Framework Core
+- Working with SQL Server databases
+- Creating dynamic user experiences using AJAX
+- Debugging issues across multiple application layers
+- Understanding how frontend and backend components interact
 
-- Food item image upload is handled by entering an image URL/path; a full file upload workflow can be added later.
-- Payment is modeled for cash-on-delivery/demo use and does not integrate with a real payment gateway.
+## Future Improvements
+
+Possible future enhancements:
+
+- Online payment integration
+- Real-time order tracking
+- Email notifications
+- Cloud deployment
+- Mobile application support
+
+## License
+
+This project is developed for educational and learning purposes.
