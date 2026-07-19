@@ -1,19 +1,82 @@
-# Tomato Express - ASP.NET Core MVC Food Delivery System
+# Tomato Express - ASP.NET Core MVC Food Delivery Web App
 
-Tomato Express is a clean ASP.NET Core MVC food delivery application for academic/project submission. It uses SQL Server, Entity Framework Core, ASP.NET Core Identity, Bootstrap 5, JavaScript, jQuery, and AJAX.
+A full-stack food delivery web application built using ASP.NET Core MVC, Entity Framework Core, and SQL Server.
+
+Tomato Express allows customers to explore food items, manage their shopping carts, place orders, and track their order history. It also provides an admin dashboard for managing food items, categories, and orders.
+
+This project was developed as part of my journey into full-stack web development, focusing on real-world concepts like authentication, authorization, database relationships, and dynamic user interactions.
+
+## Developers
+
+Nida Noor18
+Amna Khalid421
+
+
+## Features 
+
+##Customer Features
+
+User registration and login
+Secure authentication using ASP.NET Core Identity
+Browse food items and categories
+View food details
+Add items to shopping cart
+Update cart using AJAX
+Place orders
+View order history
+
+## Admin Features
+
+Role-based authorization
+Admin dashboard
+Manage food items
+Manage categories
+Manage customer orders
+Control application data
+
+## Screenshots
+
+## Home page
+
+
+
+## Food Items
+
+
+
+## Shopping Cart
+
+
+
+## Order histroy
+
+
+
+
+## Admin Dashboard
+
+
+
 
 ## Technologies Used
 
-- ASP.NET Core MVC 8
+## Backend
+- ASP.NET Core MVC 
 - C#
 - Entity Framework Core
-- SQL Server / SQL Server Express
 - ASP.NET Core Identity
-- Razor Views
-- Bootstrap 5
-- Bootstrap Icons
+
+## Frontend
 - HTML, CSS, JavaScript, jQuery
+- Bootstrap 
+- Bootstrap Icons
 - AJAX
+
+## Database
+- Entity Framework Core Code First Approach
+- SQL Server / SQL Server Express
+
+  
 
 ## Folder Structure
 
@@ -42,12 +105,67 @@ The connection string is in `appsettings.json`:
 
 Change `Server=.\\SQLEXPRESS` if your SQL Server instance has a different name.
 
+## Project Architecture
+
+The application follows the MVC (Model-View-Controller) architecture.
+
+``` text
+Tomato Express
+
+│
+├── Controllers
+│   └── Handles requests and application logic
+│
+├── Models
+│   └── Database entities and business models
+│
+├── Views
+│   └── User interface pages
+│
+├── Data
+│   └── Database context and configurations
+│
+├── wwwroot
+│   └── CSS, JavaScript, images, and static files
+│
+└── Migrations
+    └── Entity Framework database migrations
+```
+
+## Database Design
+
+The application uses SQL Server with Entity Framework Core.
+
+Main entities include:
+
+Users
+Roles
+Food Items
+Categories
+Cart Items
+Orders
+Order Details
+Entity relationships are managed using Entity Framework Core.
+
+
 ## Setup
 
-1. Install .NET 8 SDK.
-2. Install SQL Server Express or another SQL Server edition.
-3. Open a terminal in the project folder.
-4. Restore packages:
+1. Install VS 
+2. Install .NET SDK.
+3. Install SQL Server Express or another SQL Server edition.
+
+## Steps
+
+1. Clone the repo
+```powershell
+git clone 
+
+
+```
+
+
+2. 
+
 
 ```powershell
 dotnet restore
